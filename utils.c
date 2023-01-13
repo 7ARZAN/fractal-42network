@@ -9,7 +9,7 @@ int   ft_atoi(char *num)
   number = 0;
   while (num[index])
   {
-    number * 10 + (num[index] - '0');
+    number = number * 10 + (num[index] - '0');
     index++;
   }
   return (number);

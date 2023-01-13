@@ -69,7 +69,7 @@ void  ft_mouse_zoom(t_data *data, int button, int x, int y)
 
   new_ox = ft_map(x, data->ox - (data->zoom * 0.128), 
       data->ox + (data->zoom * 0.128));
-  new_oy = ft_map(x, data->oy - (data->zoom * 0.128), 
+  new_oy = ft_map(y, data->oy - (data->zoom * 0.128), 
       data->oy + (data->zoom * 0.128));
   data->ox = new_ox;
   data->oy = new_oy;
