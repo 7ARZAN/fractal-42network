@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:38:08 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:18:32 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:23:16 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,9 @@ int main(int ac, char **av)
     }
   }
   write(1, "##############  'Fractols'  ###############\n", 44);
-  write(1, "#                                         #\n", 44);
-  write(1, "#                                         #\n", 44);
   write(1, "# 1 - 'Mandelbrot'                        #\n", 44);
-  write(1, "#                                         #\n", 44);
   write(1, "# 2 - 'Julia'                             #\n", 44);
-  write(1, "#                                         #\n", 44);
   write(1, "# 3 - 'burning_ship'                      #\n", 44);
-  write(1, "#                                         #\n", 44);
-  write(1, "#                                         #\n", 44);
   write(1, "##############  'Fractols'  ###############\n", 44);
   return (0);
 }
