@@ -12,51 +12,51 @@
 
 #include "../fractol.h"
 
-int   ft_atoi(char *num)
+int	ft_atoi(char *num)
 {
-  int number;
-  int index;
+	int	number;
+	int	index;
 
-  index = 0;
-  number = 0;
-  while (num[index])
-  {
-    number = number * 10 + (num[index] - '0');
-    index++;
-  }
-  return (number);
+	index = 0;
+	number = 0;
+	while (num[index])
+	{
+		number = number * 10 + (num[index] - '0');
+		index++;
+	}
+	return (number);
 }
 
-double  ft_map(int in, double min, double max)
+double	ft_map(int in, double min, double max)
 {
-  double  maped;
+	double	maped;
 
-  maped = in * ((max - min) / 600) + min;
-  return (maped);
+	maped = in * ((max - min) / 600) + min;
+	return (maped);
 }
 
-int ft_close(t_data *data)
+int	ft_close(t_data *data)
 {
-  mlx_destroy_window(data->cnx, data->window);
-  exit(0);
+	mlx_destroy_window(data->cnx, data->window);
+	exit(0);
 }
 
-void  ft_instructions(void)
+void	ft_instructions(void)
 {
-  write(1, "############## INSTRUCTION ##############\n", 43);
-  write(1, "#                                       #\n", 43);
-  write(1, "#                                       #\n", 43);
-  write(1, "# mouse wheel   -   Zoom                #\n", 43);
-  write(1, "# mouse buttons - Use them whith julia  #\n", 43);
-  write(1, "#                                       #\n", 43);
-  write(1, "#                                       #\n", 43);
-  write(1, "# r - Reset                             #\n", 43);
-  write(1, "# c - Change Color                      #\n", 43);
-  write(1, "# p - Change fractal                    #\n", 43);
-  write(1, "# z - Increase the max iteration        #\n", 43);
-  write(1, "# n - Decrease the max iteration        #\n", 43);
-  write(1, "# esc | q - Quit                        #\n", 43);
-  write(1, "#                                       #\n", 43);
-  write(1, "#                                       #\n", 43);
-  write(1, "############## INSTRUCTION ##############\n", 43);
+	write(1, "############## INSTRUCTION ##############\n", 43);
+	write(1, "#                                       #\n", 43);
+	write(1, "#                                       #\n", 43);
+	write(1, "# mouse wheel   -   Zoom                #\n", 43);
+	write(1, "# mouse buttons - Use them whith julia  #\n", 43);
+	write(1, "#                                       #\n", 43);
+	write(1, "#                                       #\n", 43);
+	write(1, "# r - Reset                             #\n", 43);
+	write(1, "# c - Change Color                      #\n", 43);
+	write(1, "# p - Change fractal                    #\n", 43);
+	write(1, "# z - Increase the max iteration        #\n", 43);
+	write(1, "# n - Decrease the max iteration        #\n", 43);
+	write(1, "# esc | q - Quit                        #\n", 43);
+	write(1, "#                                       #\n", 43);
+	write(1, "#                                       #\n", 43);
+	write(1, "############## INSTRUCTION ##############\n", 43);
 }

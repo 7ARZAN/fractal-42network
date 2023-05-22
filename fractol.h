@@ -13,8 +13,8 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <math.h>
 # include "mlx/mlx.h"
+# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -69,6 +69,6 @@ int			ft_key_hook(int keycode, void *param);
 void		ft_mouse_zoom(t_data *data, int button, int x, int y);
 int			ft_mouse_hook(int button, int x, int y, void *param);
 void		ft_instructions(void);
-int 		ft_close(t_data *data);
+int			ft_close(t_data *data);
 
 #endif

@@ -12,32 +12,32 @@
 
 #include "../fractol.h"
 
-void  ft_get_color(t_data *data)
+void	ft_get_color(t_data *data)
 {
-  data->color_code++;
-  if (data->color_code == 8)
-    data->color_code = 0;
-  if (data->color_code == 0)
-    data->color = 0xff0801;
-  else if (data->color_code == 1)
-    data->color = 0xfff600;
-  else if (data->color_code == 2)
-    data->color = 0x18ff00;
-  else if (data->color_code == 3)
-    data->color = 0xf4f4f5;
-  else if (data->color_code == 4)
-    data->color = 0xb0ffd9;
-  else if (data->color_code == 5)
-    data->color = 0xffffd9;
-  else if (data->color_code == 6)
-    data->color = 0xFFFCA7;
-  else if (data->color_code == 7)
-    data->color = 0xf1f1e1;
+	data->color_code++;
+	if (data->color_code == 8)
+		data->color_code = 0;
+	if (data->color_code == 0)
+		data->color = 0xff0801;
+	else if (data->color_code == 1)
+		data->color = 0xfff600;
+	else if (data->color_code == 2)
+		data->color = 0x18ff00;
+	else if (data->color_code == 3)
+		data->color = 0xf4f4f5;
+	else if (data->color_code == 4)
+		data->color = 0xb0ffd9;
+	else if (data->color_code == 5)
+		data->color = 0xffffd9;
+	else if (data->color_code == 6)
+		data->color = 0xFFFCA7;
+	else if (data->color_code == 7)
+		data->color = 0xf1f1e1;
 }
 
-void  ft_key_hook2(t_data *data, int keycode)
+void	ft_key_hook2(t_data *data, int keycode)
 {
-		if (keycode == 35)
+	if (keycode == 35)
 		data->julia = !data->julia;
 	if (keycode == 15)
 	{
@@ -57,56 +57,56 @@ void  ft_key_hook2(t_data *data, int keycode)
 		data->julia_move = !data->julia_move;
 }
 
-int ft_key_hook(int keycode, void *param)
+int	ft_key_hook(int keycode, void *param)
 {
-  t_data  *data;
+	t_data	*data;
 
-  data = param;
-  if(keycode == 53 || keycode == 12)
-    exit(0);
-  else if (keycode == 126)
-    data->oy -= data->zoom / 10;
-  else if (keycode == 125)
-    data->oy += data->zoom / 10;
-  else if (keycode == 124)
-    data->ox += data->zoom / 10;
-  else if (keycode == 123)
-    data->ox -= data->zoom / 10;
-  ft_key_hook2(data, keycode);
-  if (keycode == 35 || keycode == 15 || keycode == 45 || keycode == 6
-    || keycode == 126 || keycode == 125 || keycode == 124 || keycode == 123)
-    ft_draw(*data);
-  return (0);
+	data = param;
+	if (keycode == 53 || keycode == 12)
+		exit(0);
+	else if (keycode == 126)
+		data->oy -= data->zoom / 10;
+	else if (keycode == 125)
+		data->oy += data->zoom / 10;
+	else if (keycode == 124)
+		data->ox += data->zoom / 10;
+	else if (keycode == 123)
+		data->ox -= data->zoom / 10;
+	ft_key_hook2(data, keycode);
+	if (keycode == 35 || keycode == 15 || keycode == 45 || keycode == 6
+		|| keycode == 126 || keycode == 125 || keycode == 124 || keycode == 123)
+		ft_draw(*data);
+	return (0);
 }
 
-void  ft_mouse_zoom(t_data *data, int button, int x, int y)
+void	ft_mouse_zoom(t_data *data, int button, int x, int y)
 {
-  double  new_ox;
-  double  new_oy;
+	double	new_ox;
+	double	new_oy;
 
-  new_ox = ft_map(x, data->ox - (data->zoom * 0.128), 
-      data->ox + (data->zoom * 0.128));
-  new_oy = ft_map(y, data->oy - (data->zoom * 0.128), 
-      data->oy + (data->zoom * 0.128));
-  data->ox = new_ox;
-  data->oy = new_oy;
-  if (button == 5)
-    data->zoom -= data->zoom * 0.1;
-  else if (button == 4)
-    data->zoom += data->zoom * 0.1;
+	new_ox = ft_map(x, data->ox - (data->zoom * 0.128), data->ox + (data->zoom
+				* 0.128));
+	new_oy = ft_map(y, data->oy - (data->zoom * 0.128), data->oy + (data->zoom
+				* 0.128));
+	data->ox = new_ox;
+	data->oy = new_oy;
+	if (button == 5)
+		data->zoom -= data->zoom * 0.1;
+	else if (button == 4)
+		data->zoom += data->zoom * 0.1;
 }
 
-int ft_mouse_hook(int button, int x, int y, void *param)
+int	ft_mouse_hook(int button, int x, int y, void *param)
 {
-  t_data  *data;
+	t_data	*data;
 
-  data = param;
-  if (button != 1 && button != 2)
-  {
-    ft_mouse_zoom(data, button, x, y);
-    ft_draw(*data);
-  }
-  else if (button == 1 && data->julia)
-    data->julia_move = !data->julia_move;
-  return (0);
+	data = param;
+	if (button != 1 && button != 2)
+	{
+		ft_mouse_zoom(data, button, x, y);
+		ft_draw(*data);
+	}
+	else if (button == 1 && data->julia)
+		data->julia_move = !data->julia_move;
+	return (0);
 }
