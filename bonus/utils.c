@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:53 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:55:46 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:54:37 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_atoi(char *num)
 	return (number);
 }
 
+//ft_map function to map the values !
+//and return the mapped value !
 double	ft_map(int in, double min, double max)
 {
 	double	maped;
@@ -35,6 +37,7 @@ double	ft_map(int in, double min, double max)
 	return (maped);
 }
 
+//ft_close function to close the window !
 int	ft_close(t_data *data)
 {
 	mlx_destroy_window(data->cnx, data->window);

@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:38:08 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 11:06:04 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:41:37 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	int		number;
 
-	if (ac >= 2)
+	if (ac == 2)
 	{
 		number = ft_atoi(av[1]);
 		if (number == 1 || number == 2 || number == 3)

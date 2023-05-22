@@ -6,12 +6,13 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:30 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:52:49 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:54:04 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
+//get_color function to get the color of each pixel !
 void	ft_get_color(t_data *data)
 {
 	data->color_code++;
@@ -35,6 +36,13 @@ void	ft_get_color(t_data *data)
 		data->color = 0xf1f1e1;
 }
 
+//ft_key_hook2 function to handle the key events !
+//keycode == 35 to switch between julia and mandelbrot !
+//keycode == 15 to reset the fractal !
+//keycode == 45 to decrease the number of iterations !
+//keycode == 6 to increase the number of iterations !
+//keycode == 8 to change the color of the fractal !
+//keycode == 49 to switch between moving and not moving the julia !
 void	ft_key_hook2(t_data *data, int keycode)
 {
 	if (keycode == 35)
@@ -57,6 +65,9 @@ void	ft_key_hook2(t_data *data, int keycode)
 		data->julia_move = !data->julia_move;
 }
 
+//ft_key_hook function to handle the key events !
+//keycode == 53 || keycode == 12 to exit the program !
+//keycode == 126 || keycode == 125 || keycode == 124 || keycode == 123 to move the fractal !
 int	ft_key_hook(int keycode, void *param)
 {
 	t_data	*data;
@@ -79,6 +90,11 @@ int	ft_key_hook(int keycode, void *param)
 	return (0);
 }
 
+//ft_mouse_zoom function to handle the mouse events !
+//button == 5 to zoom in ! button == 4 to zoom out !
+//x and y are the coordinates of the mouse !
+//new_ox and new_oy are the new coordinates of the mouse !
+//we use ft_map function to map the coordinates of the mouse !
 void	ft_mouse_zoom(t_data *data, int button, int x, int y)
 {
 	double	new_ox;
@@ -96,6 +112,8 @@ void	ft_mouse_zoom(t_data *data, int button, int x, int y)
 		data->zoom += data->zoom * 0.1;
 }
 
+//ft_mouse_hook function to handle the mouse events !
+//button == 1 to switch between moving and not moving the julia !
 int	ft_mouse_hook(int button, int x, int y, void *param)
 {
 	t_data	*data;

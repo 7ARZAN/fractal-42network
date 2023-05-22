@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:42 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 11:04:37 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:47:36 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_get_title(int fractol)
 	return ("FRACTOLL - Burning ship");
 }
 
+//ft_init function to initialize the data structure with the values of the fractal choosen by the user !
+//and initialize the mlx window and the image
 void	ft_init(t_data *data, int fractol)
 {
 	data->cnx = mlx_init();
@@ -42,12 +44,14 @@ void	ft_init(t_data *data, int fractol)
 	data->var.b_r = 0.622;
 }
 
+//fun function to move the julia set with the mouse movement 
+//and draw it again with the new values of a_r and b_r
 int	fun(int x, int y, t_data *data)
 {
-	if (x >= 0 && x <= 600 && y >= 0 && y <= 600 && data->julia_move)
+	if (x >= 0 && x <= 600 && y >= 0 && y <= 600 && data->julia_move) //check if the mouse is inside the window and if the julia set is activated
 	{
-		data->var.a_r = ft_map(x, data->ox - data->zoom, data->ox + data->zoom);
-		data->var.b_r = ft_map(y, data->oy - data->zoom, data->oy + data->zoom);
+		data->var.a_r = ft_map(x, data->ox - data->zoom, data->ox + data->zoom); //map the x value to the real part of the complex number
+		data->var.b_r = ft_map(y, data->oy - data->zoom, data->oy + data->zoom); //map the y value to the imaginary part of the complex number
 		ft_draw(*data);
 	}
 	return (1);
@@ -58,7 +62,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	int		number;
 
-	if (ac >= 2)
+	if (ac == 2)
 	{
 		number = ft_atoi(av[1]);
 		if (number == 1 || number == 2 || number == 3)
@@ -73,10 +77,10 @@ int	main(int ac, char **av)
 			mlx_loop(data.cnx);
 		}
 	}
-	write(1, "##############  'Fractols'  ###############\n", 44);
+	write(1, "##############  'Fractals'  ###############\n", 44);
 	write(1, "# 1 - <Mandelbrot>                        #\n", 44);
 	write(1, "# 2 - <Julia>                             #\n", 44);
 	write(1, "# 3 - <burning_ship>                      #\n", 44);
-	write(1, "##############  'Fractols'  ###############\n", 44);
+	write(1, "##############  'Fractals'  ###############\n", 44);
 	return (0);
 }

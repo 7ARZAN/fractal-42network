@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:40:31 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 11:10:52 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:40:19 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void		ft_get_color(t_data *data);
 void		ft_key_hook2(t_data *data, int keycode);
 int			ft_key_hook(int keycode, void *param);
 void		ft_mouse_zoom(t_data *data, int button, int x, int y);
-void		ft_zoom(t_data *data, int button, int x, int y);
 int			ft_mouse_hook(int button, int x, int y, void *param);
 void		ft_instructions(void);
 int			ft_close(t_data *data);

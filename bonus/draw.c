@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:37 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:17:46 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:50:24 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_pre_cal(t_data *data, int x, int y)
 	data->var.num_it = 0;
 }
 
+//ft_calculater function to calculate the number of iterations for each pixel !
+//and check if the complex number is in the set or not !
 void	ft_calculater(t_data *data)
 {
 	while (data->var.num_it < data->max_it)
@@ -41,6 +43,8 @@ void	ft_calculater(t_data *data)
 	}
 }
 
+//ft_mlx_pixel_put function to put the pixel in the window !
+//and give it a color !
 void	ft_mlx_pixel_put(t_data data, int x, int y, int color)
 {
 	char	*pixel;
@@ -50,6 +54,8 @@ void	ft_mlx_pixel_put(t_data data, int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
+//ft_draw function to draw the fractal !
+//and put it in the window !
 void	ft_draw(t_data data)
 {
 	int	x;
@@ -60,7 +66,7 @@ void	ft_draw(t_data data)
 	while (y < 600)
 	{
 		x = 0;
-		while (x < 600)
+		while (x < 600) // 600 is the size of the window ! (600 * 600) !
 		{
 			ft_pre_cal(&data, x, y);
 			ft_calculater(&data);

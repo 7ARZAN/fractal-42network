@@ -6,7 +6,7 @@
 #    By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 06:00:52 by elakhfif          #+#    #+#              #
-#    Updated: 2023/05/22 06:28:31 by elakhfif         ###   ########.fr        #
+#    Updated: 2023/05/22 12:57:25 by elakhfif         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,8 @@ $(NAME_BONUS) : $(BONUS_OBJ)
 
 clean :
 	@rm -rf $(OBJ) $(BONUS_OBJ)
-	@echo "$(RED)$(NAME) $(GREEN)OBJECTS DELETED ✔️"
-	@echo "$(RED)$(NAME_BONUS) $(GREEN)OBJECTS DELETED ✔️"
+	@echo "$(RED)$(NAME) $(GREEN)OBJS DELETED ✔️"
+	@echo "$(RED)$(NAME_BONUS) $(GREEN)OBJS DELETED ✔️"
 
 fclean : clean
 	@rm -rf $(NAME) $(NAME_BONUS)

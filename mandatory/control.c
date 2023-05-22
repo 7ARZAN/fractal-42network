@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:40:19 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 11:10:03 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:56:36 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	ft_key_hook(int keycode, void *param)
 	return (0);
 }
 
-void	ft_zoom(t_data *data, int button, int x, int y)
+void	ft_mouse_zoom(t_data *data, int button, int x, int y)
 {
 	double	tmpx;
 	double	tmpy;
@@ -88,18 +88,19 @@ void	ft_zoom(t_data *data, int button, int x, int y)
 	tmpy = (double)y / 600;
 	if (button == 4)
 	{
-		data->zoom *= 1.1;
-		data->ox = data->ox * 1.1 + tmpx * 0.1;
-		data->oy = data->oy * 1.1 + tmpy * 0.1;
+		data->zoom *= 1.1; // 1.1 is the zoom factor
+		data->ox = data->ox * 1.1 + tmpx * 0.1; // 0.1 is the move factor
+		data->oy = data->oy * 1.1 + tmpy * 0.1; // 0.1 is the move factor
 	}
 	else if (button == 5)
 	{
-		data->zoom /= 1.1;
-		data->ox = data->ox / 1.1 - tmpx * 0.1;
-		data->oy = data->oy / 1.1 - tmpy * 0.1;
+		data->zoom /= 1.1; // 1.1 is the zoom factor
+		data->ox = data->ox / 1.1 - tmpx * 0.1; // 0.1 is the move factor
+		data->oy = data->oy / 1.1 - tmpy * 0.1; // 0.1 is the move factor
 	}
 }
 
+//mouse hook function to zoom in and out
 int	ft_mouse_hook(int button, int x, int y, void *param)
 {
 	t_data	*data;
