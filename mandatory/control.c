@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:40:19 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:46:39 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 11:10:03 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	ft_key_hook(int keycode, void *param)
 	return (0);
 }
 
-void	ft_mouse_zoom(t_data *data, int button, int x, int y)
+void	ft_zoom(t_data *data, int button, int x, int y)
 {
 	double	tmpx;
 	double	tmpy;
