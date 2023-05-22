@@ -1,4 +1,16 @@
-#include "fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/22 06:07:42 by elakhfif          #+#    #+#             */
+/*   Updated: 2023/05/22 06:17:53 by elakhfif         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../fractol.h"
 
 char  *ft_get_title(int fractol)
 {
@@ -41,6 +53,12 @@ int fun(int x, int y, t_data *data)
   return (1);
 }
 
+int ft_close(t_data *data)
+{
+  mlx_destroy_window(data->cnx, data->window);
+  exit(0);
+}
+
 int main(int ac, char **av)
 {
   t_data  data;
@@ -57,19 +75,14 @@ int main(int ac, char **av)
       mlx_key_hook(data.window, ft_key_hook, &data);
       mlx_mouse_hook(data.window, ft_mouse_hook, &data);
       mlx_hook(data.window, 6, 0, fun, &data);
+      mlx_hook(data.window, 17, 0, ft_close, &data);
       mlx_loop(data.cnx);
     }
   }
   write(1, "##############  'Fractols'  ###############\n", 44);
-  write(1, "#                                         #\n", 44);
-  write(1, "#                                         #\n", 44);
-  write(1, "# 1 - 'Mandelbrot'                        #\n", 44);
-  write(1, "#                                         #\n", 44);
-  write(1, "# 2 - 'Julia'                             #\n", 44);
-  write(1, "#                                         #\n", 44);
-  write(1, "# 3 - 'burning_ship'                      #\n", 44);
-  write(1, "#                                         #\n", 44);
-  write(1, "#                                         #\n", 44);
+  write(1, "# 1 - <Mandelbrot>                        #\n", 44);
+  write(1, "# 2 - <Julia>                             #\n", 44);
+  write(1, "# 3 - <burning_ship>                      #\n", 44);
   write(1, "##############  'Fractols'  ###############\n", 44);
   return (0);
 }

@@ -1,4 +1,16 @@
-#include "fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   control.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/22 06:07:30 by elakhfif          #+#    #+#             */
+/*   Updated: 2023/05/22 06:17:39 by elakhfif         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../fractol.h"
 
 void  ft_get_color(t_data *data)
 {
@@ -25,19 +37,26 @@ void  ft_get_color(t_data *data)
 
 void  ft_key_hook2(t_data *data, int keycode)
 {
-  if (keycode == 6)
-    data->max_it += 50;
-  else if (keycode == 45 && data->max_it > 50)
-    data->max_it -= 50;
-  else if (keycode == 15)
-  {
-    data->zoom = 2.5;
-    data->oy = 0;
-    data->ox = 0;
-    data->max_it = 100;
-  }
-  else if (keycode == 25)
-    ft_get_color(data);
+		if (keycode == 35)
+		data->julia = !data->julia;
+	if (keycode == 15)
+	{
+		data->zoom = 2;
+		data->ox = 0;
+		data->oy = 0;
+		data->julia_move = 0;
+		data->julia = !data->julia;
+		data->color_code = 0;
+		data->color = 0xff0801;
+	}
+	else if (keycode == 45)
+		data->max_it -= 10;
+	else if (keycode == 6)
+		data->max_it += 10;
+	else if (keycode == 8)
+		ft_get_color(data);
+	else if (keycode == 49)
+		data->julia_move = !data->julia_move;
 }
 
 int ft_key_hook(int keycode, void *param)
