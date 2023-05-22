@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:30 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:17:39 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:52:49 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ void  ft_key_hook2(t_data *data, int keycode)
 		data->ox = 0;
 		data->oy = 0;
 		data->julia_move = 0;
-		data->julia = !data->julia;
 		data->color_code = 0;
-		data->color = 0xff0801;
 	}
 	else if (keycode == 45)
 		data->max_it -= 10;

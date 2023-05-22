@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:40:27 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:18:38 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:57:24 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ double  ft_map(int in, double min, double max)
 
   maped = in * ((max - min) / 600) + min;
   return (maped);
+}
+
+int ft_close(t_data *data)
+{
+  mlx_destroy_window(data->cnx, data->window);
+  exit(0);
 }
 
 void  ft_instructions(void)

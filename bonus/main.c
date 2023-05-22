@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:42 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:17:53 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:55:58 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,6 @@ int fun(int x, int y, t_data *data)
     ft_draw(*data);
   }
   return (1);
-}
-
-int ft_close(t_data *data)
-{
-  mlx_destroy_window(data->cnx, data->window);
-  exit(0);
 }
 
 int main(int ac, char **av)
