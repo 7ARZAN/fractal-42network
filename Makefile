@@ -6,7 +6,7 @@
 #    By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 06:00:52 by elakhfif          #+#    #+#              #
-#    Updated: 2023/05/22 12:57:25 by elakhfif         ###   ########.fr        #
+#    Updated: 2023/05/23 07:44:13 by elakhfif         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC	= mandatory/control.c\
 	  mandatory/main.c\
 	  mandatory/utils.c\
 
-NAME_BONUS	= fractol_bonus
+NAME_BONUS	= ultrafractol
 BONUS_SRC	= bonus/control.c\
 		  bonus/draw.c\
 		  bonus/main.c\

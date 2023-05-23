@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 06:07:53 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 12:54:37 by elakhfif         ###   ########.fr       */
+/*   Created: 2023/05/22 05:40:27 by elakhfif          #+#    #+#             */
+/*   Updated: 2023/05/23 07:30:39 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	ft_atoi(char *num)
 	return (number);
 }
 
-//ft_map function to map the values !
-//and return the mapped value !
 double	ft_map(int in, double min, double max)
 {
 	double	maped;
@@ -37,7 +35,6 @@ double	ft_map(int in, double min, double max)
 	return (maped);
 }
 
-//ft_close function to close the window !
 int	ft_close(t_data *data)
 {
 	mlx_destroy_window(data->cnx, data->window);
@@ -54,7 +51,7 @@ void	ft_instructions(void)
 	write(1, "#                                       #\n", 43);
 	write(1, "#                                       #\n", 43);
 	write(1, "# r - Reset                             #\n", 43);
-	write(1, "# c - Change color                      #\n", 43);
+	write(1, "# c - Change Color                      #\n", 43);
 	write(1, "# p - Change fractal                    #\n", 43);
 	write(1, "# z - Increase the max iteration        #\n", 43);
 	write(1, "# n - Decrease the max iteration        #\n", 43);
@@ -62,4 +59,32 @@ void	ft_instructions(void)
 	write(1, "#                                       #\n", 43);
 	write(1, "#                                       #\n", 43);
 	write(1, "############## INSTRUCTION ##############\n", 43);
+}
+
+double	ft_atof(char *str, double res)
+{
+	int	i;
+	int	sign;
+	int	divider;
+
+	divider = 1;
+	i = 0;
+	sign = 1;
+	res = 0;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (str[i] && str[i] != '.')
+		res = res * 10 + str[i++] - '0';
+	if (str[i++] == '.')
+	{
+		while (str[i])
+		{
+			res = res * 10 + str[i++] - '0';
+			divider *= 10;
+		}
+	}
+	return (res * sign / divider);
 }

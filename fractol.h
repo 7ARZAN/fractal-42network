@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:40:31 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 12:40:19 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/23 07:43:06 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ void		ft_mouse_zoom(t_data *data, int button, int x, int y);
 int			ft_mouse_hook(int button, int x, int y, void *param);
 void		ft_instructions(void);
 int			ft_close(t_data *data);
+void    	julia_args(char **av);
+double		ft_atof(char *str, double res);
 
 #endif

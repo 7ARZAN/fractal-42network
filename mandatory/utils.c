@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:40:27 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 06:57:24 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/23 07:30:39 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,32 @@ void	ft_instructions(void)
 	write(1, "#                                       #\n", 43);
 	write(1, "#                                       #\n", 43);
 	write(1, "############## INSTRUCTION ##############\n", 43);
+}
+
+double	ft_atof(char *str, double res)
+{
+	int	i;
+	int	sign;
+	int	divider;
+
+	divider = 1;
+	i = 0;
+	sign = 1;
+	res = 0;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (str[i] && str[i] != '.')
+		res = res * 10 + str[i++] - '0';
+	if (str[i++] == '.')
+	{
+		while (str[i])
+		{
+			res = res * 10 + str[i++] - '0';
+			divider *= 10;
+		}
+	}
+	return (res * sign / divider);
 }

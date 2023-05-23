@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 06:07:42 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 12:47:36 by elakhfif         ###   ########.fr       */
+/*   Created: 2023/05/22 05:38:08 by elakhfif          #+#    #+#             */
+/*   Updated: 2023/05/23 07:31:52 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ char	*ft_get_title(int fractol)
 	return ("FRACTOLL - Burning ship");
 }
 
-//ft_init function to initialize the data structure with the values of the fractal choosen by the user !
-//and initialize the mlx window and the image
 void	ft_init(t_data *data, int fractol)
 {
 	data->cnx = mlx_init();
@@ -44,14 +42,12 @@ void	ft_init(t_data *data, int fractol)
 	data->var.b_r = 0.622;
 }
 
-//fun function to move the julia set with the mouse movement 
-//and draw it again with the new values of a_r and b_r
 int	fun(int x, int y, t_data *data)
 {
-	if (x >= 0 && x <= 600 && y >= 0 && y <= 600 && data->julia_move) //check if the mouse is inside the window and if the julia set is activated
+	if (x >= 0 && x <= 600 && y >= 0 && y <= 600 && data->julia_move)
 	{
-		data->var.a_r = ft_map(x, data->ox - data->zoom, data->ox + data->zoom); //map the x value to the real part of the complex number
-		data->var.b_r = ft_map(y, data->oy - data->zoom, data->oy + data->zoom); //map the y value to the imaginary part of the complex number
+		data->var.a_r = ft_map(x, data->ox - data->zoom, data->ox + data->zoom);
+		data->var.b_r = ft_map(y, data->oy - data->zoom, data->oy + data->zoom);
 		ft_draw(*data);
 	}
 	return (1);
@@ -77,10 +73,25 @@ int	main(int ac, char **av)
 			mlx_loop(data.cnx);
 		}
 	}
-	write(1, "##############  'Fractals'  ###############\n", 44);
-	write(1, "# 1 - <Mandelbrot>                        #\n", 44);
-	write(1, "# 2 - <Julia>                             #\n", 44);
-	write(1, "# 3 - <burning_ship>                      #\n", 44);
-	write(1, "##############  'Fractals'  ###############\n", 44);
+	else if (ac == 4 && ft_atoi(av[1]) == 2)
+		julia_args(av);
+	write(1, "Usage:\t./fractol [1, 2, 3]\n", 28);
+	write(1, "[1]:\tMandelbrot\n[2]:\tJulia\n[3]:\tBurning ship\n", 47);
 	return (0);
+}
+
+void	julia_args(char **av)
+{
+	t_data	data;
+
+	ft_instructions();
+	ft_init(&data, 2);
+	data.var.a_r = ft_atof(av[2], 0);
+	data.var.b_r = ft_atof(av[3], 0);
+	ft_draw(data);
+	mlx_key_hook(data.window, ft_key_hook, &data);
+	mlx_mouse_hook(data.window, ft_mouse_hook, &data);
+	mlx_hook(data.window, 6, 0, fun, &data);
+	mlx_hook(data.window, 17, 0, ft_close, &data);
+	mlx_loop(data.cnx);
 }

@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:38:08 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 12:41:37 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/23 07:31:52 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,25 @@ int	main(int ac, char **av)
 			mlx_loop(data.cnx);
 		}
 	}
-	write(1, "##############  'Fractols'  ###############\n", 44);
-	write(1, "# 1 - 'Mandelbrot'                        #\n", 44);
-	write(1, "# 2 - 'Julia'                             #\n", 44);
-	write(1, "# 3 - 'burning_ship'                      #\n", 44);
-	write(1, "##############  'Fractols'  ###############\n", 44);
+	else if (ac == 4 && ft_atoi(av[1]) == 2)
+		julia_args(av);
+	write(1, "Usage:\t./fractol [1, 2, 3]\n", 28);
+	write(1, "[1]:\tMandelbrot\n[2]:\tJulia\n[3]:\tBurning ship\n", 47);
 	return (0);
+}
+
+void	julia_args(char **av)
+{
+	t_data	data;
+
+	ft_instructions();
+	ft_init(&data, 2);
+	data.var.a_r = ft_atof(av[2], 0);
+	data.var.b_r = ft_atof(av[3], 0);
+	ft_draw(data);
+	mlx_key_hook(data.window, ft_key_hook, &data);
+	mlx_mouse_hook(data.window, ft_mouse_hook, &data);
+	mlx_hook(data.window, 6, 0, fun, &data);
+	mlx_hook(data.window, 17, 0, ft_close, &data);
+	mlx_loop(data.cnx);
 }
