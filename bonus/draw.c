@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:37 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 12:50:24 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/23 07:49:05 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_draw(t_data data)
 	while (y < 600)
 	{
 		x = 0;
-		while (x < 600) // 600 is the size of the window ! (600 * 600) !
+		while (x < 600)
 		{
 			ft_pre_cal(&data, x, y);
 			ft_calculater(&data);

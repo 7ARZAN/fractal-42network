@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:30 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/22 12:54:04 by elakhfif         ###   ########.fr       */
+/*   Updated: 2023/05/23 07:48:36 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	ft_key_hook2(t_data *data, int keycode)
 
 //ft_key_hook function to handle the key events !
 //keycode == 53 || keycode == 12 to exit the program !
-//keycode == 126 || keycode == 125 || keycode == 124 || keycode == 123 to move the fractal !
+//keycode == 126 || keycode == 125 || keycode == 124 ||
+//keycode == 123 to move the fractal !
 int	ft_key_hook(int keycode, void *param)
 {
 	t_data	*data;
