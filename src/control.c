@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 06:07:30 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/23 07:48:36 by elakhfif         ###   ########.fr       */
+/*   Updated: 2024/12/26 00:32:53 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ void	ft_get_color(t_data *data)
 }
 
 //ft_key_hook2 function to handle the key events !
-//keycode == 35 to switch between julia and mandelbrot !
-//keycode == 15 to reset the fractal !
-//keycode == 45 to decrease the number of iterations !
-//keycode == 6 to increase the number of iterations !
-//keycode == 8 to change the color of the fractal !
-//keycode == 49 to switch between moving and not moving the julia !
 void	ft_key_hook2(t_data *data, int keycode)
 {
 	if (keycode == 35)
