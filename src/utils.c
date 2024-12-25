@@ -6,7 +6,7 @@
 /*   By: elakhfif <elakhfif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 05:40:27 by elakhfif          #+#    #+#             */
-/*   Updated: 2023/05/23 07:30:39 by elakhfif         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:39:10 by elakhfif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ int	ft_atoi(char *num)
 	int	number;
 	int	index;
 
-	index = 0;
+	index = -1;
 	number = 0;
-	while (num[index])
-	{
+	while (num[++index])
 		number = number * 10 + (num[index] - '0');
-		index++;
-	}
 	return (number);
 }
 
@@ -67,15 +64,12 @@ double	ft_atof(char *str, double res)
 	int	sign;
 	int	divider;
 
-	divider = 1;
-	i = 0;
-	sign = 1;
+	i = -1;
 	res = 0;
-	if (str[i] == '-')
-	{
+	sign = 1;
+	divider = 1;
+	if (str[++i] == '-')
 		sign = -1;
-		i++;
-	}
 	while (str[i] && str[i] != '.')
 		res = res * 10 + str[i++] - '0';
 	if (str[i++] == '.')
