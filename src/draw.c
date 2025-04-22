@@ -10,74 +10,74 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../include/fractol.h"
 
-void	ft_pre_cal(t_data *data, int x, int y)
+void compute_pixel(t_fractal *fractal, int x, int y)
 {
-	data->var.a = ft_map(x, data->ox - data->zoom, data->ox + data->zoom);
-	data->var.b = ft_map(y, data->oy - data->zoom, data->oy + data->zoom);
-	if (!data->julia)
+	fractal->complex.real = map_coord(x, fractal->offset_x - fractal->zoom,
+		fractal->offset_x + fractal->zoom);
+	fractal->complex.imag = map_coord(y, fractal->offset_y - fractal->zoom,
+		fractal->offset_y + fractal->zoom);
+	if (!fractal->is_julia)
 	{
-		data->var.a_r = data->var.a;
-		data->var.b_r = data->var.b;
+		fractal->complex.real_const = fractal->complex.real;
+		fractal->complex.imag_const = fractal->complex.imag;
 	}
-	data->var.num_it = 0;
+	fractal->complex.iterations = 0;
 }
 
-//ft_calculater function to calculate the number of iterations for each pixel !
-//and check if the complex number is in the set or not !
-void	ft_calculater(t_data *data)
+void iterate_fractal(t_fractal *fractal)
 {
-	while (data->var.num_it < data->max_it)
+	double real_temp;
+	double imag_temp;
+
+	while (fractal->complex.iterations < fractal->max_iterations)
 	{
-		if (data->burning_ship)
-			data->var.bb = fabs(2 * data->var.a * data->var.b);
-		else
-			data->var.bb = 2 * data->var.a * data->var.b;
-		data->var.aa = data->var.a * data->var.a - data->var.b * data->var.b;
-		data->var.a = data->var.aa + data->var.a_r;
-		data->var.b = data->var.bb + data->var.b_r;
-		data->var.num_it++;
-		if (data->var.a * data->var.a + data->var.b * data->var.b > 4)
+		real_temp = fractal->complex.real * fractal->complex.real -
+			fractal->complex.imag * fractal->complex.imag;
+		imag_temp = 2 * fractal->complex.real * fractal->complex.imag;
+		if (fractal->is_burning_ship)
+			imag_temp = fabs(imag_temp);
+		fractal->complex.real = real_temp + fractal->complex.real_const;
+		fractal->complex.imag = imag_temp + fractal->complex.imag_const;
+		fractal->complex.iterations++;
+		if (fractal->complex.real * fractal->complex.real +
+			fractal->complex.imag * fractal->complex.imag > 4)
 			break ;
 	}
 }
 
-//ft_mlx_pixel_put function to put the pixel in the window !
-//and give it a color !
-void	ft_mlx_pixel_put(t_data data, int x, int y, int color)
+void set_pixel(t_fractal *fractal, int x, int y, int color)
 {
 	char	*pixel;
 
-	pixel = data.image.address + (y * data.image.line_length + x
-			* (data.image.bits_per_pixel / 8));
+	pixel = fractal->img.data + (y * fractal->img.line_len +
+		x * (fractal->img.bpp / 8));
 	*(unsigned int *)pixel = color;
 }
 
-//ft_draw function to draw the fractal !
-//and put it in the window !
-void	ft_draw(t_data data)
+void render_fractal(t_fractal *fractal)
 {
-	int	x;
-	int	y;
-	int	color;
+	int x;
+	int y;
+	int color;
 
 	y = 0;
-	while (y < 600)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < 600)
+		while (x < WIDTH)
 		{
-			ft_pre_cal(&data, x, y);
-			ft_calculater(&data);
-			color = data.var.num_it * data.color;
-			if (data.var.num_it == data.max_it)
+			compute_pixel(fractal, x, y);
+			iterate_fractal(fractal);
+			color = fractal->complex.iterations * fractal->color;
+			if (fractal->complex.iterations == fractal->max_iterations)
 				color = 0;
-			ft_mlx_pixel_put(data, x, y, color);
+			set_pixel(fractal, x, y, color);
 			x++;
 		}
 		y++;
 	}
-	mlx_clear_window(data.cnx, data.window);
-	mlx_put_image_to_window(data.cnx, data.window, data.image.img, 0, 0);
+	mlx_clear_window(fractal->mlx, fractal->window);
+	mlx_put_image_to_window(fractal->mlx, fractal->window, fractal->img.ptr, 0, 0);
 }

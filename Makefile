@@ -10,42 +10,36 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC	= cc -Wall -Wextra -Werror -g -O3
+NAME = fractol
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g -O3 -Ofast
+SRC = src/control.c src/draw.c main.c src/utils.c
+OBJ = $(SRC:.c=.o)
+MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-NAME	= fractol
-SRC	= src/control.c\
-	  src/draw.c\
-	  src/main.c\
-	  src/utils.c\
+CLR_RMV := \033[0m
+RED := \033[1;31m
+GREEN := \033[1;32m
+YELLOW := \033[1;33m
+BLUE := \033[1;34m
 
-OBJ  = $(SRC:.c=.o)
+all: $(NAME)
 
-all : $(NAME) 
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	@echo "$(BLUE)Compiled $(YELLOW)$(NAME) $(GREEN)successfully! ✔️$(CLR_RMV)"
 
-CLR_RMV:= \033[0m
-RED:= \033[1;31m
-GREEN:= \033[1;32m
-YELLOW:= \033[1;33m
-BLUE:= \033[1;34m
-CYAN:= \033[1;36m
+%.o: %.c include/fractol.h
+	@$(CC) $(CFLAGS) -Iinclude -c $< -o $@
 
+clean:
+	@rm -f $(OBJ)
+	@echo "$(RED)Object files deleted! $(GREEN)✔️$(CLR_RMV)"
 
-$(NAME) : $(OBJ)
-	@$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "$(BLUE)Compilation of ${YELLOW}$(NAME) $(RED)BY 7ARZAN ..."
-	@echo "$(GREEN)HAK HAHOWA $(YELLOW)$(NAME) $(GREEN)M9AD  ✔️"
+fclean: clean
+	@rm -f $(NAME)
+	@echo "$(RED)$(NAME) deleted! $(GREEN)✔️$(CLR_RMV)"
 
+re: fclean all
 
-
-%.o : %.c fractol.h
-	@$(CC) -c $< -o $@
-
-clean :
-	@rm -rf $(OBJ)
-	@echo "$(RED)$(NAME) $(GREEN)OBJS DELETED ✔️"
-
-fclean : clean
-	@rm -rf $(NAME)
-	@echo "$(RED)$(NAME) $(GREEN)DELETED ✔️"
-
-re : fclean all
+.PHONY: all clean fclean re
