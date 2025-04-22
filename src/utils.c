@@ -64,10 +64,10 @@ double parse_float(char *str)
 void display_instructions(void)
 {
 	const char *instructions[] = {
-		"############## INSTRUCTIONS ##############\n",
-		"# Mouse wheel: Zoom in/out               #\n",
-		"# Mouse left: Toggle Julia movement      #\n",
-		"# Arrows: Move fractal                   #\n",
+		"############## INSTRUCTIONS #############\n",
+		"# Mouse wheel: Zoom in/out              #\n",
+		"# Mouse left: Toggle Julia movement     #\n",
+		"# Arrows: Move fractal                  #\n",
 		"# R: Reset view                         #\n",
 		"# C: Cycle colors                       #\n",
 		"# P: Switch fractal type                #\n",
@@ -75,7 +75,7 @@ void display_instructions(void)
 		"# N: Decrease iterations                #\n",
 		"# ESC/Q: Quit                           #\n",
 		"# Space: Toggle Julia dynamics          #\n",
-		"############## INSTRUCTIONS ##############\n"
+		"############## INSTRUCTIONS #############\n"
 	};
 	int	i;
 
